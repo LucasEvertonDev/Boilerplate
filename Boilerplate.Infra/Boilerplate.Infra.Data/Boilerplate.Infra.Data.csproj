@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.9">
+      <PrivateAssets>none</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Boilerplate.Core\Boilerplate.Core.Domain\Boilerplate.Core.Domain.csproj" />
+    <ProjectReference Include="..\..\Boilerplate.Core\Boilerplate.Core.IContracts\Boilerplate.Core.IContracts.csproj" />
+    <ProjectReference Include="..\..\Boilerplate.Core\Boilerplate.Core.Models\Boilerplate.Core.Models.csproj" />
+    <ProjectReference Include="..\Boilerplate.Infra.Plugins\Boilerplate.Infra.Plugins.csproj" />
+    <ProjectReference Include="..\Boilerplate.Infra.Utils\Boilerplate.Infra.Utils.csproj" />
+  </ItemGroup>
+
+
+</Project>

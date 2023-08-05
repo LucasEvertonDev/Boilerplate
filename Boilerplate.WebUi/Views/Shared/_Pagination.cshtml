@@ -1,0 +1,41 @@
+﻿@model IConsultaViewModel
+@{
+    ViewBag.Title = "_Pagination";
+}
+
+@*import this so we get our HTML Helper*@
+@using X.PagedList.Mvc.Core;
+
+@*import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+@using X.PagedList;
+@using X.PagedList.Web.Common;
+
+<link href="~/css/pagedList.css" rel="stylesheet" type="text/css" />
+
+@Html.PagedListPager(Model.Itens, page => Url.Action(Model.Itens.Action, Model.Itens.Controller,
+    new 
+    { 
+        page,
+        query = Model.Itens.Query
+    }),
+    options: PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        pagedListRenderOptions: new PagedListRenderOptions
+        {
+            DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+            DisplayLinkToIndividualPages = true,
+            UlElementClasses = new[]
+            {
+                "pagination"
+            },
+            ContainerDivClasses = new[]
+            {
+                "pagination-container"
+            }
+        },
+        ajaxOptions: new AjaxOptions
+        {
+            HttpMethod = "GET",
+            UpdateTargetId = Model.Itens.UpdateTargetID,
+                 InsertionMode = InsertionMode.Replace
+        })
+)

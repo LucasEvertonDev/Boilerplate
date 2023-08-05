@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Boilerplate.Infra\Boilerplate.Infra.Plugins\Boilerplate.Infra.Plugins.csproj" />
+    <ProjectReference Include="..\Boilerplate.Core.Domain\Boilerplate.Core.Domain.csproj" />
+    <ProjectReference Include="..\Boilerplate.Core.IContracts\Boilerplate.Core.IContracts.csproj" />
+    <ProjectReference Include="..\Boilerplate.Core.Models\Boilerplate.Core.Models.csproj" />
+  </ItemGroup>
+</Project>

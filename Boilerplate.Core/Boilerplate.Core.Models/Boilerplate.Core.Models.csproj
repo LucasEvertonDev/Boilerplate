@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\**" />
+    <Compile Remove="RouteParams\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="RouteParams\**" />
+    <None Remove="Models\**" />
+    <None Remove="RouteParams\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Models\Base\BaseModel.cs" />
+    <Compile Include="Models\Clients\Base\ClientModel.cs" />
+    <Compile Include="Models\Clients\CreateClientsModel.cs" />
+    <Compile Include="Models\Clients\SearchClientsModel.cs" />
+    <Compile Include="Models\Clients\UpdateClientsModel.cs" />
+    <Compile Include="Models\Errors\ErrorsModel.cs" />
+    <Compile Include="Models\User\CreateUsersModel.cs" />
+    <Compile Include="Models\User\LoginModel.cs" />
+    <Compile Include="Models\User\ParamsModel.cs" />
+    <Compile Include="Models\User\SearchUsersModel.cs" />
+    <Compile Include="Models\User\Base\UserModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+</Project>

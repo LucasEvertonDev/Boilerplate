@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Boilerplate.Core\Boilerplate.Core.Application\Boilerplate.Core.Application.csproj" />
+    <ProjectReference Include="..\Boilerplate.Infra.Data\Boilerplate.Infra.Data.csproj" />
+    <ProjectReference Include="..\Boilerplate.Infra.Plugins\Boilerplate.Infra.Plugins.csproj" />
+    <ProjectReference Include="..\Boilerplate.Infra.Utils\Boilerplate.Infra.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

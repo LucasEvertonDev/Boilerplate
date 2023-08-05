@@ -1,0 +1,30 @@
+﻿@model ClienteViewModel
+
+<div class="row">
+    <input asp-for="Id" hidden/>
+
+    <div class="col-4 col-xs-12 mb-3">
+        <label asp-for="Cpf" class="control-label">CPF</label>
+        <input asp-for="Cpf" class="form-control" a />
+        <span asp-validation-for="Cpf" class="text-danger"></span>
+    </div>
+
+        <div class="col-8 col-xs-12 mb-3">
+        <label asp-for="Name" class="control-label">NOME</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="col-3 col-xs-12 mb-3">
+        <label asp-for="BirthDate" class="control-label">DATA NASCIMENTO</label>
+        <input asp-for="BirthDate" type="date" class="form-control" />
+        <span asp-validation-for="BirthDate" class="text-danger"></span>
+    </div>
+
+    <div class="col-4 col-xs-12 mb-3">
+        <label asp-for="PhoneNumber" class="control-label">TELEFONE</label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+</div>
+@await Component.InvokeAsync("SaveButtonsViewComponent")
