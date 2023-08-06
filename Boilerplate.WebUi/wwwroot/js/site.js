@@ -27,6 +27,22 @@
 }
 
 
+
+function GetModalLoading() {
+    return "<button type = 'button' class='btn btn-primary' style='display:none'  data-bs-toggle='modal' data-bs-target='#ModalLoading2' id='btnShowLoading2'></button> \
+        <!--Modal --> \
+        <div class='modal fade' id='ModalLoading2' tabindex='-1' aria-hidden='true'> \
+            <div class='modal-dialog modal-dialog-centered' style='justify-content:center' role='document'> \
+                <button type='button' class='btn-close' style='display:none' id='btnFecharModalLoading2' data-bs-dismiss='modal' aria-label='Close'></button> \
+                <div class='text-center'> \
+                    <div class='loadingio-spinner-spin-vq59g8ryzdh'><div class='ldio-mej6n7e7g5f'><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>\
+                </div>\
+            </div> \
+        </div>\
+    ";
+}
+
+
 function addSuccess(success) {
     if (success != null && success != "") {
         $("button[id='btnFechar']").click();
@@ -39,6 +55,20 @@ function addSuccess(success) {
         $('#modalAlert').click();
         $('html, body').scrollTop(0);
     }
+}
+
+function ShowLoading() {
+    $("button[id='btnFecharModalLoading2']").click();
+    $('#loadingModal').html("");
+
+    $('#loadingModal').html(GetModalLoading());
+    $('#ModalLoading2').modal('show');
+}
+
+function CloseLoading() {
+    $("button[id='btnFecharModalLoading2']").click();
+    $('#ModalLoading2').modal('dispose');
+    $('#loadingModal').html("");
 }
 
 function addError(error) {

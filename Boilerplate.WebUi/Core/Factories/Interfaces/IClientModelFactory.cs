@@ -10,6 +10,6 @@ namespace Boilerplate.WebUi.Core.Factories.Interfaces
         Task<ClienteViewModel> PrepareClienteViewModel(ClientModel ClientModel);
         Task<CreateClientsModel> PrepareCreateClientsModelDto(ClienteViewModel clienteViewModel);
         Task<UpdateClientsModel> PrepareUpdateClientsModel(ClienteViewModel clienteViewModel);
-        Task<ConsultarClientesViewModel> PrepareConsultaClientesModel(List<ClientModel> clientes);
+        Task<ConsultarClientesViewModel> PrepareConsultaClientesModel(ConsultarClientesViewModel clientes);
     }
 }

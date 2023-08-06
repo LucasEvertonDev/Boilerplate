@@ -1,18 +1,23 @@
-﻿using Azure;
+﻿using Boilerplate.Core.IContracts.Services.Clients;
 using Boilerplate.Core.Models.IModels;
+using Boilerplate.Core.Models.Models.Base;
 using Boilerplate.Core.Models.Models.Clients;
 using Boilerplate.Core.Models.Models.Clients.Base;
-using Boilerplate.WebUi.Controllers;
 using Boilerplate.WebUi.Core.Factories.Interfaces;
 using Boilerplate.WebUi.Infra.Pagination;
-using Boilerplate.WebUi.ViewModels.Base;
 using Boilerplate.WebUi.ViewModels.Clientes;
-using System.Net.NetworkInformation;
 
 namespace Boilerplate.WebUi.Core.Factories;
 
-public class ClientModelFactory :  IClientModelFactory
+public class ClientModelFactory : BaseModalFactory, IClientModelFactory
 {
+    private readonly ISearchClientsService _searchClientsService;
+
+    public ClientModelFactory(ISearchClientsService searchClientsService)
+    {
+        _searchClientsService = searchClientsService;
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -61,53 +66,29 @@ public class ClientModelFactory :  IClientModelFactory
     /// </summary>
     /// <param name="clientes"></param>
     /// <returns></returns>
-    public Task<ConsultarClientesViewModel> PrepareConsultaClientesModel(List<ClientModel> clientes)
+    public async Task<ConsultarClientesViewModel> PrepareConsultaClientesModel(ConsultarClientesViewModel viewModel)
     {
-        var model = new ConsultarClientesViewModel()
+        var clients = await _searchClientsService.ExecuteAsync(new PaginationOptions<SearchClientsModel>()
         {
-            Clients = clientes
-        };
-        var filter = new PagingFilter(model: model, propertiesName: new string[] { "Name", "Cpf" });
+            Parameter = new SearchClientsModel
+            {
+                Cpf = viewModel.Cpf,
+                Name = viewModel.Name
+            },
+            PageNumber = viewModel.Page ?? 1,
+            PageSize = viewModel.PageSize,
+        });
 
-        model.Itens = Paging<IModel>(model.Clients.Skip((model.Page ?? 1) * 2).Take(2), model.Page ?? 1, 2, clientes.Count, filter.ToQuery());
+        viewModel.Clients = clients.Items.ToList();
 
-        model.Itens.Action = "Page";
-        model.Itens.Controller = "Clients";
+        var filter = new PagingFilter(model: viewModel, propertiesName: new string[] { "Name", "Cpf" });
 
-        return Task.FromResult(model);
-    }
+        viewModel.Itens = Paging<IModel>(viewModel.Clients, clients.PageNumber, clients.PageSize, clients.TotalElements, filter.ToQuery());
 
+        viewModel.Itens.Action = "Page";
+        viewModel.Itens.Controller = "Clients";
 
-    /// <summary>
-    /// Realiza a paginação dos itens recebidos;
-    /// </summary>
-    /// <typeparam name="T">tipo do item paginado.</typeparam>
-    /// <param name="itens">itens para paginação.</param>
-    /// <param name="page">pagina para exibição.</param>
-    /// <param name="pageSize">tamanho da página.</param>
-    /// <param name="totalItens">total de itens recuperados.</param>
-    /// <param name="query">filtros aplicados.</param>
-    /// <param name="action">action a ser acionada.</param>
-    /// <returns>lista do itens paginados.</returns>
-    protected virtual StaticPagedListRT<T> Paging<T>(IEnumerable<T> itens, int page, int pageSize, int totalItens, string query, string action = "Page", string updateTargetID = "pagination-target-div") where T : class
-    {
-        return new StaticPagedListRT<T>(itens, page, pageSize, totalItens)
-        {
-            Controller = "Clients",
-            Action = action,
-            Query = query,
-            UpdateTargetID = updateTargetID,
-        };
-    }
-
-
-    /// <summary>
-    /// Filtros Paginação
-    /// </summary>
-    /// <returns></returns>
-    private string[] GetFiltersEmbriao()
-    {
-        return new string[] { "Name", "Cpf" };
+        return viewModel;
     }
 
     /// <summary>

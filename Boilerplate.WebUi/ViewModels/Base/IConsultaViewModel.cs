@@ -5,9 +5,8 @@ namespace Boilerplate.WebUi.ViewModels.Base;
 
 public interface IConsultaViewModel
 {
-    /// <summary>
-    /// Indica que a consulta é realizada via popup.
-    /// </summary>
+   
+    int PageSize { get; set; }
 
     /// <summary>
     /// Itens recuperados.

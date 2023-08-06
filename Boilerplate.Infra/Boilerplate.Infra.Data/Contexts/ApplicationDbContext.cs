@@ -1,4 +1,5 @@
-﻿using Boilerplate.Infra.Data.Contexts.Configurations;
+﻿using Boilerplate.Core.Domain.Entities;
+using Boilerplate.Infra.Data.Contexts.Configurations;
 using Boilerplate.Infra.Plugins.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
        : base(options)
     {
     }
+    
+    public DbSet<Client> Clients { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

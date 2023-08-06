@@ -58,23 +58,23 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script>
         $('form').on('submit', function () {
-            new bootstrap.Modal(document.getElementById("modalLoading"), {}).show();
+            $("#divLoading").show();
         });
 
         $('.action-loading').click(function () {
-            new bootstrap.Modal(document.getElementById("modalLoading"), {}).show();
+            $("#divLoading").show();
         });
 
         $(document).ready(function () {
-            new bootstrap.Modal(document.getElementById("modalLoading"), {}).hide();
+            $("#divLoading").hide();
         });
 
         window.onunload = function () {
-            new bootstrap.Modal(document.getElementById("modalLoading"), {}).hide();
+            $("#divLoading").hide();
         };
 
         $(document).ajaxComplete(function () {
-            new bootstrap.Modal(document.getElementById("modalLoading"), {}).hide();
+            $("#divLoading").hide();
         });
 
         $(function () {

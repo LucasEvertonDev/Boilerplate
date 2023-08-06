@@ -15,7 +15,7 @@ namespace Boilerplate.WebUi.Infra.Attributes
         {
             ISession session = filterContext.HttpContext.Session;
             // check  sessions here
-            if (string.IsNullOrEmpty(session.Get<string>("UserId").ToString()))
+            if (string.IsNullOrEmpty(session.Get<string>("UserId")?.ToString()))
             {
                 filterContext.Result = new RedirectToActionResult("Login", "Account", new { });
                 return;

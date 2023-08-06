@@ -17,7 +17,7 @@
         @if (Context.User.IsInRole(Roles.Admin))
         {
             <li class="menu-item @VerifyMenuconditions(false, "home", "index" )">
-                <a asp-controller="home" asp-action="index" class="menu-link">
+                <a asp-controller="home" asp-action="index" class="menu-link action-loading">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div>Painel Gerencial</div>
                 </a>
@@ -33,12 +33,12 @@
 
                 <ul class="menu-sub">
                     <li class="menu-item  @VerifyMenuconditions(false, "clients", "index" )">
-                        <a asp-controller="clients" asp-action="index" class="menu-link">
+                        <a asp-controller="clients" asp-action="index" class="menu-link  action-loading">
                             <div>Consultar</div>
                         </a>
                     </li>
                     <li class="menu-item @VerifyMenuconditions(false, "clients", "create" )">
-                        <a asp-controller="clients" asp-action="create" class="menu-link">
+                        <a asp-controller="clients" asp-action="create" class="menu-link action-loading">
                             <div>Cadastrar</div>
                         </a>
                     </li>

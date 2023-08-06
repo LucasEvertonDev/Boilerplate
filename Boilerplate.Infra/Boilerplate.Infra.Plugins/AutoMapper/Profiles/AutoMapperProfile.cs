@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Boilerplate.Core.Domain.Entities;
+using Boilerplate.Core.Models.Models.Base;
 using Boilerplate.Core.Models.Models.Clients;
 using Boilerplate.Core.Models.Models.Clients.Base;
 
@@ -18,6 +19,7 @@ public class AutoMapperProfile : Profile
     public void ConvertDomainToModel()
     {
         CreateMap<Client, ClientModel>();
+        CreateMap<PagedResult<Client>, PagedResult<ClientModel>>();
     }
 
     public void ConvertModelToDomain()

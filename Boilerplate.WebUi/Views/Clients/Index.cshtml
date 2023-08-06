@@ -25,10 +25,10 @@
                     <button type="submit" class="btn btn btn-outline-success">
                         <span class="tf-icons bx bx-search"></span>&nbsp; Buscar
                     </button>
-                    <a  asp-action="create" asp-controller="clients" class="btn btn-outline-secondary">
+                    <a  asp-action="create" asp-controller="clients" class="btn btn-outline-secondary  action-loading">
                         <span class="tf-icons bx bx-plus"></span>&nbsp; Novo
                     </a>                      
-                    <a asp-action="" asp-controller="" class="btn btn-outline-secondary">
+                    <a asp-action="" asp-controller="" class="btn btn-outline-secondary  action-loading">
                         <span class="tf-icons bx bx-arrow-back"></span>&nbsp; Voltar
                     </a>
                 </div>
@@ -37,7 +37,7 @@
         <br />
 
         <div class="form-group row" id="pagination-target-div">
-            @await Html.PartialAsync("_ResultadoConsultaClientes", Model)
+            <partial name="_ResultadoConsultaClientes" model="Model" />
         </div>
      
     </div>

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk='Microsoft.NET.Sdk'>
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,16 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Class1.cs" />
+    <Compile Remove='Class1.cs' />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
+    <PackageReference Include='System.Linq.Queryable' Version='4.3.0' />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Boilerplate.Core.Domain\Boilerplate.Core.Domain.csproj" />
-    <ProjectReference Include="..\Boilerplate.Core.Models\Boilerplate.Core.Models.csproj" />
+    <ProjectReference Include='..\Boilerplate.Core.Domain\Boilerplate.Core.Domain.csproj' />
+    <ProjectReference Include='..\Boilerplate.Core.Models\Boilerplate.Core.Models.csproj' />
   </ItemGroup>
 
 </Project>

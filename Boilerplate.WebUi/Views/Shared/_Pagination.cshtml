@@ -30,12 +30,26 @@
             ContainerDivClasses = new[]
             {
                 "pagination-container"
+            },
+            LiElementClasses = new [] {
+                "li-pagination"
             }
         },
         ajaxOptions: new AjaxOptions
         {
             HttpMethod = "GET",
             UpdateTargetId = Model.Itens.UpdateTargetID,
-                 InsertionMode = InsertionMode.Replace
+            InsertionMode = InsertionMode.Replace
         })
 )
+
+<partial name="_ValidationScriptsPartial" />
+<script type="text/javascript">
+    $(function () {
+         $("#divLoading").hide();
+    });
+
+    $('.li-pagination').not('.active').click(function (event) {
+        $("#divLoading").show();
+    });
+</script>

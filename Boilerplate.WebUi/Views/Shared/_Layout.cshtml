@@ -46,15 +46,17 @@
             </div>
             @await Html.PartialAsync("_LayoutFooter")
             @await Html.PartialAsync("_LayoutLoading")
-            <div class="content-backdrop fade"></div>
             <div id="alertsModal"></div>
+            <div id="loadingModal"></div>
           </div>
         </div>
       </div>
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
 
+
     <script src="~/theme/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
     <script src="~/theme/assets/vendor/libs/popper/popper.js"></script>
     <script src="~/theme/assets/vendor/js/bootstrap.js"></script>
     <script src="~/theme/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
@@ -67,23 +69,23 @@
 
     <script>
         $('form').on('submit', function () {
-            new bootstrap.Modal(document.getElementById("modalLoading"), {}).show();
+            $("#divLoading").show();
         });
 
         $('.action-loading').click(function () {
-            new bootstrap.Modal(document.getElementById("modalLoading"), {}).show();
+            $("#divLoading").show();
         });
 
         $(document).ready(function () {
-            new bootstrap.Modal(document.getElementById("modalLoading"), {}).hide();
+            $("#divLoading").hide();
         });
 
         window.onunload = function () {
-            new bootstrap.Modal(document.getElementById("modalLoading"), {}).hide();
+            $("#divLoading").hide();
         };
 
         $(document).ajaxComplete(function () {
-            new bootstrap.Modal(document.getElementById("modalLoading"), {}).hide();
+            $("#divLoading").hide();
         });
 
         $(function () {

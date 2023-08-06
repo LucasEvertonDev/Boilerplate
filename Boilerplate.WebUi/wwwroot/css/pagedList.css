@@ -164,3 +164,40 @@
         cursor: not-allowed;
         background-color: #ffffff;
     }
+
+
+
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    z-index: 2;
+    color: #a3a4cc;
+    cursor: default;
+    background-color: #14141e;
+    border-color: #a3a4cc;
+}
+
+
+.pagination > li > a, .pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.428571429;
+    text-decoration: none;
+    background-color: #2b2c40;
+    border: 1px solid #dddddd;
+    color: #a3a4cc;
+}
+
+
+element.style {
+}
+
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+    background-color: #454650;
+}

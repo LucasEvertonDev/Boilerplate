@@ -4,6 +4,7 @@ using Boilerplate.Core.IContracts.UnitOfWork;
 using Boilerplate.Core.Models.Models.Clients.Base;
 using Boilerplate.Core.Models.Models.Clients;
 using Boilerplate.Core.IContracts.Repositorys.BaseRepos;
+using Boilerplate.Core.Models.Models.Base;
 
 namespace Boilerplate.Core.Application.Services.Clients;
 
@@ -26,6 +27,14 @@ public class SearchClientsService : BaseService, ISearchClientsService
         return await OnTransactionAsync(async () =>
         {
             return _mapper.Map<List<ClientModel>>(await _searchClientRepository.FindAll(searchClientsModel));
+        });
+    }
+
+    public async Task<PagedResult<ClientModel>> ExecuteAsync(PaginationOptions<SearchClientsModel> searchClientsModel)
+    {
+        return await OnTransactionAsync(async () =>
+        {
+            return _mapper.Map<PagedResult<ClientModel>>(await _searchClientRepository.FindAll(searchClientsModel));
         });
     }
 }

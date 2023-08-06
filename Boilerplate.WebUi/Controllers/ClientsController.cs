@@ -38,8 +38,7 @@ public class ClientsController : BaseController
     [HttpGet, SessionExpire, Authorize(Roles = Roles.Admin)]
     public async Task<IActionResult> Index()
     {
-        var viewModel = await _clientModelFactory.PrepareConsultaClientesModel(
-                await _searchClientsService.ExecuteAsync(new SearchClientsModel() { }));
+        var viewModel = await _clientModelFactory.PrepareConsultaClientesModel(new ConsultarClientesViewModel());
         return View(viewModel);
     }
     /// <summary>
@@ -50,16 +49,16 @@ public class ClientsController : BaseController
     [HttpPost, SessionExpire, Authorize(Roles = Roles.Admin)]
     public async Task<IActionResult> Index(ConsultarClientesViewModel viewModel)
     {
-        var clientes = await _clientModelFactory.PrepareConsultaClientesModel(
-            await _searchClientsService.ExecuteAsync(new SearchClientsModel
-            {
-                Cpf = viewModel.Cpf,
-                Name = viewModel.Name
-            }));
-
+        var clientes = await _clientModelFactory.PrepareConsultaClientesModel(viewModel);
         return View(clientes);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="page"></param>
+    /// <param name="query"></param>
+    /// <returns></returns>
     [HttpGet]
     public async Task<IActionResult> Page(int? page, string query = null)
     {
@@ -72,17 +71,9 @@ public class ClientsController : BaseController
 
         PagingFilter.ConverterQueryToFilter(query).ApplyFilterToObject(viewModel);
 
-        var clientes = await _clientModelFactory.PrepareConsultaClientesModel(
-           await _searchClientsService.ExecuteAsync(new SearchClientsModel
-           {
-               Cpf = viewModel.Cpf,
-               Name = viewModel.Name
-           }));
+        await _clientModelFactory.PrepareConsultaClientesModel(viewModel);
 
-        viewModel.Clients = clientes.Clients;
-        viewModel.Itens = clientes.Itens;
-
-        return View("Page", viewModel);
+        return PartialView("Page", viewModel);
     }
 
     /// <summary>

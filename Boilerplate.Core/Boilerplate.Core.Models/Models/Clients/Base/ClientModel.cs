@@ -6,7 +6,7 @@ public class ClientModel : BaseModel
 {
     public virtual string Id { get; set; }
     public string Cpf { get; set; }
-    public string Name { get; set; }
+    public virtual string Name { get; set; }
     public DateTime? BirthDate { get; set; }
     public string PhoneNumber { get; set; }
 }

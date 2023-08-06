@@ -23,5 +23,6 @@ namespace Boilerplate.WebUi.ViewModels.Clientes
 
         public bool AutoComplete { get; set; }
         public StaticPagedListRT<IModel> Itens { get; set; }
+        public int PageSize { get; set; } = 2;
     }
 }

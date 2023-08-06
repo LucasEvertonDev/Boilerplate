@@ -1,7 +1,7 @@
 ﻿@model ConsultarClientesViewModel
 
 @{
-    ViewBag.Title = "Page";
+    ViewBag.Title = "_ResultadoConsultaClientes.cshtml";
     Layout = null;
 }
 
@@ -65,5 +65,6 @@
         </table>
     </div>
     <!-- Insere a paginação. -->
-    @await Html.PartialAsync("_Pagination", Model)
+
+    <partial name="_Pagination" model="Model" />
 </div>
