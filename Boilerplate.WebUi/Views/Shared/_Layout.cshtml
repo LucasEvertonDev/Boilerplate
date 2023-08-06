@@ -72,6 +72,10 @@
             $("#divLoading").show();
         });
 
+        $('form').bind('ajax:complete', function() {
+               $("#divLoading").show();
+        });
+
         $('.action-loading').click(function () {
             $("#divLoading").show();
         });

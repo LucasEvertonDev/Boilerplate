@@ -7,7 +7,7 @@
         <h5 class="FormTitle col-12">Cadastro de Clientes</h5>
     </div>
      <div class="card-body">
-        <form asp-action="Create" asp-controller="Clients">
+        <form id="formId" asp-action="Create" asp-controller="Clients">
             <div class="row form-horizontal">
                 @await Html.PartialAsync("_DadosCliente", model: Model)
             </div>
@@ -28,7 +28,7 @@
             }
 
             if ('@Model.Enabled' == 'False') {
-                $('input').attr('disabled', 'disabled');
+                $('input').not('.searhNav').attr('disabled', 'disabled');
                 $('#button-submit').attr('disabled', 'disabled');
             }
         });
